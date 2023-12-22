@@ -1,7 +1,9 @@
 name: Deploy Weather.API to Azure
 
 on:
-  workflow_dispatch:
+  push:
+    branches:
+      - main
 
 env:
   AZURE_WEBAPP_NAME: 'ea-app-assignment3-westeu'
