@@ -1,0 +1,25 @@
+name: Deploy Weather.API to Azure
+
+on:
+  workflow_dispatch:
+
+
+jobs:
+  build: 
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up .NET Core
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: '6.0.x'
+
+      - name: Install dependencies
+        run: dotnet restore ./Weather.API/Weather.API.csproj
+
+      - name: Build
+        run: dotnet build ./Weather.API/Weather.API.csproj --configuration Release --no-restore
+  
