@@ -31,12 +31,6 @@ jobs:
       - name: Publish
         run: dotnet publish ./Weather.API/Weather.API.csproj --configuration Release --output ./publish
       
-      # login to azure
-      - name: 'Login via Azure CLI'
-        uses: azure/login@v1
-        with:
-          creds: ${{ secrets.API_LOGIN_SECRET }}
-
 
 
       # deploy to azure webapp
