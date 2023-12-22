@@ -30,10 +30,18 @@ jobs:
       # publish
       - name: Publish
         run: dotnet publish ./Weather.API/Weather.API.csproj --configuration Release --output ./publish
+      
+      # login to azure
+      - name: 'Login via Azure CLI'
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.API_LOGIN_PROFILE }}
+
+
 
       # deploy to azure webapp
       - name: 'Run Azure webapp deploy action using publish profile credentials'
-        uses: azure/webapps-deploy@v2
+        uses: azure/webapps-deploy@v1
         with:
           app-name: ${{ env.AZURE_WEBAPP_NAME }}
           publish-profile: ${{ secrets.API_PUBLISH_PROFILE }}
