@@ -37,11 +37,11 @@ jobs:
 
       # deploy to azure webapp
       - name: 'Run Azure webapp deploy action using publish profile credentials'
-          uses: azure/webapps-deploy@v1
-          with:
-            app-name: ${{ env.AZURE_WEBAPP_NAME }}
-            publish-profile: ${{ secrets.API_PUBLISH_SECRET }}
-            package: ./publish
+        uses: azure/webapps-deploy@v1
+        with:
+          app-name: ${{ env.AZURE_WEBAPP_NAME }}
+          publish-profile: ${{ secrets.API_PUBLISH_SECRET }}
+          package: ./publish
 
 
   # Add steps to build and deploy your Azure Functions application
